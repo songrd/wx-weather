@@ -1,0 +1,33 @@
+@import "/app.wxss";
+
+.weather{
+    width: 100%;
+    text-align: center;
+    line-height: 30px;
+    color: #6ba2d4;
+    font-weight: 500;
+    height: 100%;
+}
+
+page {
+    background-color: #f2f2f8;
+}
+
+.weather-list {
+    width:100%;
+    text-align:left;
+    line-height:30px;
+    color:#6ba2d4;
+    font-weight:400;
+    padding-left:30px;
+    position:absolute;
+    top:0;
+    left:500px;
+    padding-top:30px;
+    background-color:#f2f2f8;
+    height:95%;
+}
+
+.weather-list-info {
+    margin-bottom:20px;
+}

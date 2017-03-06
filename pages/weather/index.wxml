@@ -1,0 +1,32 @@
+<view wx:if="{{weatherData.weather_data}}">
+  <image  src="{{config.weaterImgPath}}/{{weatherImg}}.jpg"  style="width:100%" />
+</view>
+<view class="weather">
+  <!-- 展示白天/夜晚天气小图标 -->
+  <view wx:if="{{weatherData.weather_data}}">
+    <image wx:if="{{isNight == 1}}" src="{{weatherData.weather_data[0].nightPictureUrl}}"  class="orange" style="width: 42px; height: 30px;" />
+    <image wx:else src="{{weatherData.weather_data[0].dayPictureUrl}}"  class="orange" style="width: 42px; height: 30px;" />
+  </view>
+  <view>
+    <!-- 城市下拉选择框 -->
+    <picker bindchange="bindPickerChange" value="{{selectCityIndex}}" range="{{config.weaterCityList}}">
+      <view class="picker" style="background:#fff;">
+        城市：<text>{{weatherData.currentCity}}</text>
+      </view>
+    </picker>
+  </view>
+  <!-- 天气内容 -->
+  <text>{{weatherDataStr}}</text> 
+  <!-- 未来几天按钮 -->
+  <button class="show-more" bindtap="showMore" type="default" size="mini" style="margin-top:20px; font-weight:400;">未来几天</button>
+</view>
+
+<!-- 未来几天模板 -->
+<view animation="{{animationData}}" class="weather-list {{isHideMore}}">
+  <view wx:for="{{weatherData.weather_data}}" class="weather-list-info">
+      <view>{{item.date}}</view>
+      <view>{{item.weather}} ， {{item.temperature}}</view>
+      <view>{{item.wind}}</view>
+  </view>
+  <button class="show-more" bindtap="hideMore" type="default" size="mini" style="margin-top:20px; font-weight:400;">查看当天</button>
+</view>
